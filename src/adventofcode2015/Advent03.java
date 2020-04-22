@@ -5,7 +5,7 @@ import java.util.HashSet;
 
 public class Advent03 {
     public static void main(String[] args) {
-        String[] fileLines = FileUtils.readFromFile("C:\\Users\\david\\IdeaProjects\\iwilllearnjava\\src\\main\\resources\\Input_03.txt");
+        String[] fileLines = FileUtils.readFromFile("/Users/macbookpro13/Desktop/Shares/iwilllearnjava/src/main/resources/Input_03.txt");
         HashSet<House> uniqueHouses = new HashSet<>();
         String line = fileLines[0];
         char[] chars = line.toCharArray();

@@ -3,7 +3,7 @@ package adventofcode2015;
 
 public class Advent02 {
     public static void main(String[] args) {
-        String[] fileLines = FileUtils.readFromFile("C:\\Users\\david\\IdeaProjects\\iwilllearnjava\\src\\main\\resources\\Input_021.txt");
+        String[] fileLines = FileUtils.readFromFile("/Users/macbookpro13/Desktop/Shares/iwilllearnjava/src/main/resources/Input_021.txt");
         int sum = 0;
         for (String fileLine : fileLines) {
             String[] parts = fileLine.split("x");
