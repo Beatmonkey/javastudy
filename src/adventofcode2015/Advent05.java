@@ -3,9 +3,7 @@ package adventofcode2015;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by david on 4/6/2017.
- */
+
 public class Advent05 {
     public static void main(String[] args) {
         String[] fileLines = FileUtils.readFromFile("/Users/macbookpro13/Desktop/Shares/iwilllearnjava/src/main/resources/Input_05.txt");

@@ -6,9 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by david on 3/25/2017.
- */
+
 public class FileUtils {
     public static String[] readFromFile (String fileName) {
         List<String> list = new ArrayList<>();

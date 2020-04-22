@@ -2,9 +2,7 @@ package adventofcode2015;
 
 import java.util.HashSet;
 
-/**
- * Created by david on 3/31/2017.
- */
+
 public class Advent03 {
     public static void main(String[] args) {
         String[] fileLines = FileUtils.readFromFile("C:\\Users\\david\\IdeaProjects\\iwilllearnjava\\src\\main\\resources\\Input_03.txt");

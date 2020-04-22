@@ -14,6 +14,15 @@ public class Cat extends Animal {
 
     }
 
+    @Override
+    public String toString() {
+        return "Cat{" +
+                "name='" + name + '\'' +
+                ", appetite=" + appetite +
+                ", isHungry=" + isHungry +
+                '}';
+    }
+
     /**
      * Функция кормит кота из тарелки.
      * @param plate Тарелка с едой из которой ест кот

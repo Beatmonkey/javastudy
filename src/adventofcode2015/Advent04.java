@@ -3,9 +3,7 @@ package adventofcode2015;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 
-/**
- * Created by david on 4/2/2017.
- */
+
 public class Advent04 {
     public static String getHash(String str) throws Exception {
         MessageDigest md = MessageDigest.getInstance("MD5");

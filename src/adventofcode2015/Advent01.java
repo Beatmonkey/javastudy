@@ -1,8 +1,6 @@
 package adventofcode2015;
 
-/**
- * Created by david on 3/25/2017.
- */
+
 public class Advent01 {
     public static void main(String[] args) {
         String[] fileLines = FileUtils.readFromFile("/Users/macbookpro13/Desktop/Shares/iwilllearnjava/src/main/resources/Input_012.txt");

@@ -16,13 +16,7 @@ public class FeedTheCat {
         cats[4] = new Cat("Дима", 40);
         cats[5] = new Cat("Барсик", 50);
 
-//        for (int i = 0; i < cats.length; i++) {
-//            boolean isCatEatEnough = cats[i].feedCat(plate1);
-//            if (isCatEatEnough) {
-//                System.out.println("Кот " + cats[i].name + " поел!");
-//            }
-//
-//        }
+
 
             for (int i = 0; i < cats.length; i++) {
                 boolean isCatEatEnough = false;
@@ -39,17 +33,11 @@ public class FeedTheCat {
 
 
             }
+        System.out.println(cats[2].toString());
 
 
 
 
-
-
-
-
-
-//        cat1.feedCat(plate1);
-//        System.out.println(plate1.currentPlateVolume);
 
 
     }
