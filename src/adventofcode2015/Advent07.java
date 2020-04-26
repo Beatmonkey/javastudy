@@ -43,7 +43,7 @@ public class Advent07 {
         Pattern and = Pattern.compile("(^\\D.*|\\d.*) (AND) (\\D.*|\\d.*) -> (\\D.*)");
         Pattern or = Pattern.compile("(^\\D.*|\\d.*) (OR) (\\D.*|\\d.*) -> (\\D.*)");
         Pattern rshift = Pattern.compile("(^\\D.*|\\d.*) (RSHIFT) (\\D.*|\\d.*) -> (\\D.*)");
-        Pattern lshiht = Pattern.compile("(^\\D.*|\\d.*) (LSHIFT) (\\D.*|\\d.*) -> (\\D.*)");
+        Pattern lshift = Pattern.compile("(^\\D.*|\\d.*) (LSHIFT) (\\D.*|\\d.*) -> (\\D.*)");
         Pattern not = Pattern.compile("NOT (\\D.*) -> (\\D.*)");
         Pattern provide = Pattern.compile("(^\\d*|[a-z].*) -> (\\D)$");
 
@@ -52,7 +52,7 @@ public class Advent07 {
                 Matcher andM = and.matcher(fileLine);
                 Matcher orM = or.matcher(fileLine);
                 Matcher rhsiftM = rshift.matcher(fileLine);
-                Matcher lhsiftM = lshiht.matcher(fileLine);
+                Matcher lhsiftM = lshift.matcher(fileLine);
                 Matcher notM = not.matcher(fileLine);
                 Matcher provideM = provide.matcher(fileLine);
 
