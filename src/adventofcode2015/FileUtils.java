@@ -1,8 +1,6 @@
 package adventofcode2015;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +8,8 @@ import java.util.List;
 public class FileUtils {
     public static String[] readFromFile (String fileName) {
         List<String> list = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+        InputStream is = FileUtils.class.getResourceAsStream(fileName);
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
             String line;
             while ((line = br.readLine()) != null) {
                 list.add(line);

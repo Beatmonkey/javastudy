@@ -19,7 +19,7 @@ public class Advent07 {
 
 
     public static void main(String[] args) {
-        String[] fileLines = FileUtils.readFromFile("/Users/macbookpro13/Desktop/Shares/iwilllearnjava/src/main/resources/Input_07.txt");
+        String[] fileLines = FileUtils.readFromFile("/Input_07.txt");
 
 
 
