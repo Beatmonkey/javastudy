@@ -49,19 +49,6 @@ public class Advent06 {
             }
 
         }
-/*        for (String toggle : fileLines) {
-            Light light = getCoordinates(toggle);
-            for (int i = light.x1; i <= light.x2; i++) {
-                for (int j = light.y1; j <= light.y2; j++) {
-                    if (lightsArray[i][j] == "OFF") {
-                        lightsArray[i][j] = "ON";
-                    } else if (lightsArray[i][j] == "ON") {
-                        lightsArray[i][j] = "OFF";
-                    }
-                }
-
-            }
-        }*/
 
         int howManyLightsLit = 0;
         for (int i = 0; i < lightsArray.length; i++) {

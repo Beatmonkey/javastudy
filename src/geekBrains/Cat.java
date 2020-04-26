@@ -23,6 +23,7 @@ public class Cat extends Animal {
                 '}';
     }
 
+
     /**
      * Функция кормит кота из тарелки.
      * @param plate Тарелка с едой из которой ест кот
