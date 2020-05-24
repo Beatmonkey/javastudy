@@ -1,17 +1,19 @@
 package differentTasks;
 
+import com.sun.nio.sctp.AbstractNotificationHandler;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
 
 
 public class SearchEngine {
 
 
     public static void main(String[] args) throws FileNotFoundException {
-        String fileDir = "";
+        String fileDir = "/Users/macbookpro13/IdeaProjects/javastudy/src/file.txt";
 
 
         for (int i = 0; i < args.length; i += 2) {
@@ -20,8 +22,23 @@ public class SearchEngine {
             }
 
         }
-        String[] people = fileReader(fileDir);
-        Scanner scannerInt = new Scanner(System.in);
+
+        SearchingEngine searchingEngine = new SearchingEngine(fileDir);
+    }
+}
+
+class SearchingEngine {
+
+    Scanner scanner = new Scanner(System.in);
+    List<String> people;
+
+    SearchingEngine(String fileDir) throws FileNotFoundException {
+        this.people = fileReader(fileDir);
+        menu();
+    }
+
+
+    void menu() {
         boolean isActionZero = false;
 
         while (!isActionZero) {
@@ -31,10 +48,10 @@ public class SearchEngine {
             System.out.println("0. Exit");
 
 
-            String action = scannerInt.next();
+            String action = scanner.next();
             switch (action) {
                 case "1":
-                    findPeople(people);
+                    findPeople(invertedIndex(people), people);
                     break;
                 case "2":
                     printAllPeople(people);
@@ -52,73 +69,32 @@ public class SearchEngine {
 
     }
 
-    public static void findPeople(String[] people) {
+    void findPeople(Map<String, List> invertedIndex, List<String> people) {
+
         System.out.println("Enter a name or email to search all suitable people.");
-        Scanner scannerStr = new Scanner(System.in);
-        String inputData = scannerStr.next();
-        String[] peopleFound = searchByPattern(people, inputData);
+        String input = scanner.next().toLowerCase();
 
-        if (peopleFound.length > 0) {
+        List<Integer> listOfIndex = invertedIndex.get(input);
+
+        if (!(listOfIndex == null)) {
             System.out.println("Found people:");
-
-            for (String personData : peopleFound) {
-                System.out.println(personData);
-
+            for (int i = 0; i < listOfIndex.size(); i++) {
+                System.out.println(people.get(listOfIndex.get(i)));
             }
         } else {
-            System.out.println("No matching people found.");
-
-        }
-
-    }
-
-    public static void printAllPeople(String[] people) {
-        System.out.println("=== List of people ===");
-        for (String personData : people) {
-            System.out.println(personData);
-
+            System.out.println("No matching people found");
         }
     }
 
-    public static String[] searchByPattern(String[] people, String inputData) {
-        int peopleFoundCounter = 0;
-        for (String personData : people) {
-            if (formatString(personData).contains(formatString(inputData))) {
-                peopleFoundCounter++;
-            }
-
-        }
-        if (peopleFoundCounter == 0) {
-            return new String[peopleFoundCounter];
-        }
-        String[] peopleFound = new String[peopleFoundCounter];
-        int a = 0;
-        for (String personData : people) {
-            if (formatString(personData).contains(formatString(inputData))) {
-                peopleFound[a] = personData;
-                a++;
-            }
-
-        }
-        return peopleFound;
-
-    }
-
-
-    public static String formatString(String string) {
-        return string.toLowerCase().replaceAll(" ", "");
-    }
-
-
-    public static String[] fileReader(String filePath) throws FileNotFoundException {
+    public List<String> fileReader(String filePath) throws FileNotFoundException {
         FileReader fileReader = new FileReader(filePath);
 
-        List<String> stringsFromFile = new ArrayList<>();
+        List<String> listOfStrings = new ArrayList<>();
 
         try (BufferedReader bufferedReader = new BufferedReader(fileReader)) {
             while (bufferedReader.ready()) {
                 String stringFromFile = bufferedReader.readLine();
-                stringsFromFile.add(stringFromFile);
+                listOfStrings.add(stringFromFile);
             }
 
         } catch (IOException e) {
@@ -126,8 +102,59 @@ public class SearchEngine {
         }
 
 
-        return stringsFromFile.toArray(new String[0]);
+        return listOfStrings;
     }
 
+    public void printAllPeople(List<String> people) {
+        System.out.println("=== List of people ===");
+        for (String personData : people) {
+            System.out.println(personData);
+
+        }
+    }
+
+    public String formatString(String string) {
+        return string.toLowerCase().replaceAll(" ", "");
+    }
+
+    public Map<String, List> invertedIndex(List<String> listOfStrings) {
+
+        Set<String> words = new HashSet<>();
+        for (String line : listOfStrings) {
+            String[] wordsInLine = line.split(" ");
+            for (String word : wordsInLine) {
+                words.add(word.toLowerCase());
+            }
+        }
+
+        Map<String, List> invertedMap = new HashMap<>();
+
+        for (String word : words) {
+            List<Integer> wordOccurs = new ArrayList<>();
+            for (String line : listOfStrings) {
+                if (line.toLowerCase().contains(word)) {
+                    wordOccurs.add(listOfStrings.indexOf(line));
+                }
+            }
+            invertedMap.put(word, wordOccurs);
+
+        }
+
+        return invertedMap;
+
+    }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
