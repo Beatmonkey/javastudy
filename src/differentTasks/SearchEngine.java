@@ -119,24 +119,24 @@ class SearchingEngine {
 
     public Map<String, List> invertedIndex(List<String> listOfStrings) {
 
-        Set<String> words = new HashSet<>();
-        for (String line : listOfStrings) {
-            String[] wordsInLine = line.split(" ");
-            for (String word : wordsInLine) {
-                words.add(word.toLowerCase());
-            }
-        }
 
         Map<String, List> invertedMap = new HashMap<>();
+        int strNumber = 0;
 
-        for (String word : words) {
-            List<Integer> wordOccurs = new ArrayList<>();
-            for (String line : listOfStrings) {
-                if (line.toLowerCase().contains(word)) {
-                    wordOccurs.add(listOfStrings.indexOf(line));
+
+        for (String line : listOfStrings) {
+
+            String[] wordsInLine = line.toLowerCase().split(" ");
+            for (String word : wordsInLine) {
+                if (invertedMap.containsKey(word)) {
+                    invertedMap.get(word).add(strNumber);
+                } else {
+                    invertedMap.put(word, new ArrayList<>());
+                    invertedMap.get(word).add(strNumber);
                 }
+
             }
-            invertedMap.put(word, wordOccurs);
+            strNumber++;
 
         }
 
